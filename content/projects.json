@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "scheduler-sim",
+    "hash": "a3f9c1e",
+    "title": "CPU Scheduling Simulator",
+    "summary": "Python simulator comparing FCFS and SJF scheduling algorithms with Gantt chart output.",
+    "description": "A discrete event simulator built for an Operating Systems course. It models process arrival, burst times, and context switching, then compares First Come First Served against nonpreemptive Shortest Job First. Outputs a Gantt chart, average waiting time, and average turnaround time for each algorithm side by side.",
+    "tags": ["python", "os", "algorithms"],
+    "stack": ["Python", "Matplotlib"],
+    "stats": {"additions": 412, "deletions": 38, "files": 9},
+    "date": "2026-06-02",
+    "images": ["/static/img/project-placeholder-1.svg", "/static/img/project-placeholder-2.svg"],
+    "repo_url": "#",
+    "live_url": ""
+  },
+  {
+    "slug": "task-flow",
+    "hash": "9b2d0aa",
+    "title": "TaskFlow Kanban Board",
+    "summary": "Drag and drop task board built with vanilla JavaScript and the Fetch API.",
+    "description": "A lightweight kanban board with drag and drop columns, local persistence, and keyboard accessibility. Built to practice DOM manipulation, event delegation, and CSS grid layout without any frontend framework.",
+    "tags": ["javascript", "css", "productivity"],
+    "stack": ["JavaScript", "HTML", "CSS"],
+    "stats": {"additions": 268, "deletions": 51, "files": 6},
+    "date": "2026-04-18",
+    "images": ["/static/img/project-placeholder-2.svg", "/static/img/project-placeholder-3.svg"],
+    "repo_url": "#",
+    "live_url": ""
+  },
+  {
+    "slug": "weather-cli",
+    "hash": "5e17f60",
+    "title": "Weather CLI",
+    "summary": "Command line weather lookup tool written in Python with caching.",
+    "description": "A small command line utility that fetches weather data for a given city, caches results locally to avoid repeat requests, and prints a compact colored summary in the terminal.",
+    "tags": ["python", "cli", "api"],
+    "stack": ["Python"],
+    "stats": {"additions": 180, "deletions": 12, "files": 4},
+    "date": "2026-02-27",
+    "images": ["/static/img/project-placeholder-3.svg"],
+    "repo_url": "#",
+    "live_url": ""
+  }
+]

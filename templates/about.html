@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}About  Sarah{% endblock %}
+{% block content %}
+
+<section class="section narrow">
+  <p class="eyebrow reveal">$ cat about.md</p>
+  <h1 class="reveal" style="--delay:60ms">About me</h1>
+
+  <div class="prose reveal" style="--delay:120ms">
+    <p>I'm a Computer Science student currently working through Operating
+      Systems coursework  schedulers, memory management, concurrency  while
+      keeping my web fundamentals sharp on the side.</p>
+    <p>Most of what's here started as a course assignment or a "how does that
+      actually work" itch. I like projects small enough to finish and
+      understand completely, rather than big ones I half understand.</p>
+    <p>Outside of coursework, I'm slowly filling out this site itself: the
+      blog is a plain Markdown CMS I wrote in Flask, and the project search is
+      a small JSON API rather than a static filter.</p>
+  </div>
+
+  <div class="skill-grid reveal" style="--delay:180ms">
+    <div class="skill-card">
+      <span class="skill-card__label">languages</span>
+      <p>Python, JavaScript, HTML, CSS</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card__label">currently studying</span>
+      <p>Operating systems, CPU scheduling, concurrency</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card__label">tools</span>
+      <p>Flask, Git, VS Code</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Sarah  Personal Portfolio{% endblock %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero__terminal reveal">
+    <div class="terminal__bar">
+      <span class="dot dot--red"></span><span class="dot dot--amber"></span><span class="dot dot--green"></span>
+      <span class="terminal__title">sarah@portfolio:~</span>
+    </div>
+    <div class="terminal__body">
+      <p class="terminal__line"><span class="prompt">$</span> <span id="typeTarget"></span><span class="cursor">▌</span></p>
+      <p class="terminal__out" id="typeOut" hidden>
+        Computer Science student. I build small, working things 
+        schedulers, boards, and CLIs  and write up what breaks.
+      </p>
+    </div>
+  </div>
+
+  <div class="hero__meta reveal" style="--delay:120ms">
+    <h1>Hi, I'm Sarah.</h1>
+    <p class="hero__sub">I study Operating Systems, algorithms, and the web 
+      and I'd rather ship a small working project than a big broken one.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="{{ url_for('projects') }}">view projects</a>
+      <a class="btn btn--ghost" href="{{ url_for('contact') }}">get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__head reveal">
+    <h2><span class="eyebrow">$ recent work</span>recent commits</h2>
+    <a class="link" href="{{ url_for('projects') }}">view full log →</a>
+  </div>
+
+  <div class="commit-list">
+    {% for p in projects %}
+    <a class="commit reveal" style="--delay:{{ loop.index0 * 90 }}ms" href="{{ url_for('project_detail', slug=p.slug) }}">
+      <span class="commit__hash">{{ p.hash }}</span>
+      <span class="commit__msg">{{ p.title }}</span>
+      <span class="commit__stat">
+        <span class="stat-add">+{{ p.stats.additions }}</span>
+        <span class="stat-del">{{ p.stats.deletions }}</span>
+      </span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

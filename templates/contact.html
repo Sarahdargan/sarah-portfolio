@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Contact Sarah{% endblock %}
+{% block content %}
+
+<section class="section narrow">
+  <p class="eyebrow reveal">$ mail sarah</p>
+  <h1 class="reveal" style="--delay:60ms">Get in touch</h1>
+  <p class="section__lede reveal" style="--delay:100ms">
+    Send a message and it lands straight in my inbox, well, in
+    <code>content/messages.json</code> for now. See the comment in
+    <code>app.py</code> for how to wire up real email delivery.
+  </p>
+
+  {% if sent %}
+  <div class="alert alert--success reveal">
+    <strong>Message sent.</strong> Thanks for reaching out. I'll get back to you soon.
+  </div>
+  {% endif %}
+
+  {% if error %}
+  <div class="alert alert--error reveal">{{ error }}</div>
+  {% endif %}
+
+  <form class="contact-form reveal" style="--delay:140ms" method="post" action="{{ url_for('contact') }}">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required>
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" required>
+    </label>
+    <label>
+      <span>Message</span>
+      <textarea name="message" rows="6" required></textarea>
+    </label>
+    <button type="submit" class="btn btn--primary">send message</button>
+  </form>
+</section>
+
+{% endblock %}

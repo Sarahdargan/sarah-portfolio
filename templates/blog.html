@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Blog  Sarah{% endblock %}
+{% block content %}
+
+<section class="section narrow">
+  <p class="eyebrow reveal">$ ls content/blog/</p>
+  <h1 class="reveal" style="--delay:60ms">Changelog</h1>
+  <p class="section__lede reveal" style="--delay:100ms">
+    Notes from building things. Add a Markdown file to <code>content/blog/</code> and it shows up here.
+  </p>
+
+  <div class="post-list">
+    {% for post in posts %}
+    <a class="post-card reveal" style="--delay:{{ loop.index0 * 80 }}ms" href="{{ url_for('blog_post', slug=post.slug) }}">
+      <span class="post-card__date">{{ post.date }}</span>
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.excerpt }}</p>
+      <span class="tag-row">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</span>
+    </a>
+    {% else %}
+    <p class="empty-state">No posts yet. Add a .md file to content/blog/.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

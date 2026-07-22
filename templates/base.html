@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Sarah's Portfolio{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="tabbar">
+  <div class="tabbar__inner">
+    <a class="tabbar__brand" href="{{ url_for('home') }}">
+      <span class="dot dot--red"></span><span class="dot dot--amber"></span><span class="dot dot--green"></span>
+      <span class="tabbar__path">~/sarah</span>
+    </a>
+    <nav class="tabbar__tabs">
+      <a href="{{ url_for('home') }}" class="tab {{ 'is-active' if active=='home' }}">home</a>
+      <a href="{{ url_for('about') }}" class="tab {{ 'is-active' if active=='about' }}">about</a>
+      <a href="{{ url_for('projects') }}" class="tab {{ 'is-active' if active=='projects' }}">projects</a>
+      <a href="{{ url_for('blog') }}" class="tab {{ 'is-active' if active=='blog' }}">blog</a>
+      <a href="{{ url_for('contact') }}" class="tab {{ 'is-active' if active=='contact' }}">contact</a>
+    </nav>
+    <button class="navtoggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+  </div>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span>&copy; {{ 2026 }} Sarah — built with Python, Flask, JavaScript &amp; CSS</span>
+    <a href="{{ url_for('static', filename='resume/resume.pdf') }}" download>download résumé</a>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

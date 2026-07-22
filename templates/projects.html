@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Projects Sarah{% endblock %}
+{% block content %}
+
+<section class="section">
+  <p class="eyebrow reveal">$ project log</p>
+  <h1 class="reveal" style="--delay:60ms">Projects</h1>
+  <p class="section__lede reveal" style="--delay:100ms">
+    Search by name, tag, or stack. It filters instantly as you type.
+  </p>
+
+  <form class="searchbar reveal" style="--delay:140ms" action="{{ url_for('projects') }}" method="get" id="searchForm">
+    <span class="searchbar__prompt">$ search</span>
+    <input
+      type="text"
+      name="q"
+      id="searchInput"
+      value="{{ query }}"
+      placeholder="e.g. python, scheduler, css..."
+      autocomplete="off">
+    <button type="submit" class="btn btn--ghost btn--small">run</button>
+  </form>
+
+  <p class="search-status" id="searchStatus" hidden></p>
+
+  <div class="commit-list" id="projectList" data-all-projects='{{ all_projects_json }}'>
+    {% for p in projects %}
+    <a class="commit reveal" style="--delay:{{ loop.index0 * 70 }}ms" href="{{ url_for('project_detail', slug=p.slug) }}">
+      <span class="commit__hash">{{ p.hash }}</span>
+      <span class="commit__msg">
+        {{ p.title }}
+        <span class="commit__summary">{{ p.summary }}</span>
+        <span class="tag-row">{% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}</span>
+      </span>
+      <span class="commit__stat">
+        <span class="stat-add">+{{ p.stats.additions }}</span>
+        <span class="stat-del">{{ p.stats.deletions }}</span>
+      </span>
+    </a>
+    {% else %}
+    <p class="empty-state" id="emptyState">No projects matched "{{ query }}". Try a different word.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

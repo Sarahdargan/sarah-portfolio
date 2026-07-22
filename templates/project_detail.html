@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }}  Sarah{% endblock %}
+{% block content %}
+
+<section class="section narrow">
+  <p class="eyebrow reveal">$ git show {{ project.hash }}</p>
+  <h1 class="reveal" style="--delay:60ms">{{ project.title }}</h1>
+  <p class="section__lede reveal" style="--delay:100ms">{{ project.summary }}</p>
+
+  <div class="tag-row reveal" style="--delay:120ms">
+    {% for t in project.stack %}<span class="tag tag--stack">{{ t }}</span>{% endfor %}
+  </div>
+
+  <div class="shot-grid reveal" style="--delay:160ms">
+    {% for img in project.images %}
+    <button class="shot" data-lightbox-src="{{ img }}">
+      <img src="{{ img }}" alt="{{ project.title }} screenshot {{ loop.index }}" loading="lazy">
+    </button>
+    {% endfor %}
+  </div>
+
+  <div class="prose reveal" style="--delay:200ms">
+    <p>{{ project.description }}</p>
+  </div>
+
+  <div class="diffstat reveal" style="--delay:220ms">
+    <span class="stat-add">+{{ project.stats.additions }} additions</span>
+    <span class="stat-del">{{ project.stats.deletions }} deletions</span>
+    <span class="stat-files">{{ project.stats.files }} files changed</span>
+  </div>
+
+  <div class="hero__actions reveal" style="--delay:240ms">
+    {% if project.repo_url and project.repo_url != '#' %}
+      <a class="btn btn--primary" href="{{ project.repo_url }}" target="_blank" rel="noopener">view code</a>
+    {% else %}
+      <span class="btn btn--primary btn--disabled">repo link goes here</span>
+    {% endif %}
+    <a class="btn btn--ghost" href="{{ url_for('projects') }}">back to projects</a>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+{% endblock %}

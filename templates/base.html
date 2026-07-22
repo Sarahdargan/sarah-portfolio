@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="site-prefix" content="">
 <title>{% block title %}Sarah's Portfolio{% endblock %}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,7 +34,7 @@
 
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <span>&copy; {{ 2026 }} Sarah — built with Python, Flask, JavaScript &amp; CSS</span>
+    <span>&copy; {{ 2026 }} Sarah  built with Python, Flask, JavaScript &amp; CSS</span>
     <a href="{{ url_for('static', filename='resume/resume.pdf') }}" download>download résumé</a>
   </div>
 </footer>

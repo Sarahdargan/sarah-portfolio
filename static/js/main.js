@@ -60,6 +60,7 @@ const searchInput = document.getElementById("searchInput");
 const projectList = document.getElementById("projectList");
 const searchForm = document.getElementById("searchForm");
 const searchStatus = document.getElementById("searchStatus");
+const sitePrefix = document.querySelector('meta[name="site-prefix"]')?.content || "";
 
 if (searchInput && projectList) {
   let allProjects = [];
@@ -87,7 +88,7 @@ if (searchInput && projectList) {
     projectList.innerHTML = projects
       .map(
         (p) => `
-      <a class="commit is-visible" href="/projects/${p.slug}">
+      <a class="commit is-visible" href="${sitePrefix}/projects/${p.slug}">
         <span class="commit__hash">${p.hash}</span>
         <span class="commit__msg">
           ${escapeHtml(p.title)}
@@ -96,7 +97,7 @@ if (searchInput && projectList) {
         </span>
         <span class="commit__stat">
           <span class="stat-add">+${p.stats.additions}</span>
-          <span class="stat-del">-${p.stats.deletions}</span>
+          <span class="stat-del">${p.stats.deletions}</span>
         </span>
       </a>`
       )
